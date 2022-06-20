@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="PersonVo " type="com.javaex.vo.PersonVo" />
+		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
 	</typeAliases>
 	
 	<mappers>

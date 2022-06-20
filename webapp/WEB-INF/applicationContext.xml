@@ -17,7 +17,7 @@
         http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 	<context:annotation-config />
-	
+
 	<context:component-scan
 		base-package="com.javaex">
 		<context:include-filter type="annotation"
@@ -39,6 +39,20 @@
 		<qualifier value="main-db" />
 	</bean>
 
-	
+	<!-- MyBatis SqlSessionFactoryBean 설정 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="oracleDatasource" />
+		<property name="configLocation"
+			value="classpath:mybatis/configuration.xml" />
+	</bean>
+
+	<!-- MyBatis SqlSessionTemplate 설정 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+
 
 </beans>
