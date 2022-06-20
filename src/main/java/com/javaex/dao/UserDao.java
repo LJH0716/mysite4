@@ -21,7 +21,7 @@ public class UserDao {
 	public void userInsert(UserVo userVo) {
 		System.out.println("UserDao.userInsert()");
 
-		sqlSession.insert("user.insert",userVo);
+		sqlSession.insert("users.insert",userVo);
 						//namespace.id(user.xml) 
 		System.out.println(userVo);
 

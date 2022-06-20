@@ -3,9 +3,9 @@
 
 <mapper namespace = "users">
 
-	<insert id="insert" parameterType = "com.javaex.vo.UserVo" >
+	<insert id="insert" parameterType = "UserVo" >
 		<![CDATA[
-			insert into users
+			insert into users 
 			values(seq_users_id.nextval,#{id},#{password},#{name},#{gender})
 		
 		]]>
