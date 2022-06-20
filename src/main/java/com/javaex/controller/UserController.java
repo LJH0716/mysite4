@@ -1,38 +1,38 @@
 package com.javaex.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.javaex.service.UserService;
+import com.javaex.vo.UserVo;
 
 @Controller
 public class UserController {
 
-	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@Autowired
+	private UserService userService;
+
+	// 회원가입 폼
+	@RequestMapping(value = "/user/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String joinForm() {
 		System.out.println("UserController>joinForm()");
 
 		return "user/joinForm";
 	}
 
-	@RequestMapping(value = "/joinOk", method = { RequestMethod.GET, RequestMethod.POST })
-	public String joinOk() {
-		System.out.println("UserController>joinOk()");
+	// 회원가입
+	@RequestMapping(value = "/user/join", method = { RequestMethod.GET, RequestMethod.POST })
+	public String join(@ModelAttribute UserVo userVo) {
+		System.out.println("UserController>join()");
 
-		return "user/joinOk";
+		userService.join(userVo);
+
+		return "";
 	}
 
-	@RequestMapping(value = "/loginForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String loginForm() {
-		System.out.println("UserController>loginForm()");
-
-		return "user/loginForm";
-	}
-
-	@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modifyForm() {
-		System.out.println("UserController>modifyForm()");
-
-		return "user/modifyForm";
-	}
+	
 
 }
