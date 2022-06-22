@@ -16,13 +16,9 @@
 <body>
 	<div id="wrap">
 
-		<!-- header -->
+		<!-- header,nav -->
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-		<!-- //header -->
-
-		<!-- nav -->
-		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
-		<!-- //nav -->
+		<!-- //header,nav -->
 		
 		<div id="container" class="clearfix">
 			<div id="aside">
