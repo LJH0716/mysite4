@@ -47,11 +47,11 @@
 
 				<div id="board">
 					<div id="modifyForm">
-						<form action="board" method="get">
-							<input type="hidden" name="action" value="modify"> <input type="hidden" name="no" value="${boardVo.no}">
+						<form action="/mysite4/board/modify" method="get">
+							 <input type="hidden" name="no" value="${boardVo.no}">
 							<!-- 작성자 -->
 							<div class="form-group">
-								<span class="form-text">작성자</span> <span class="form-value">>${boardVo.name}</span>
+								<span class="form-text">작성자</span> <span class="form-value">${boardVo.name}</span>
 							</div>
 
 							<!-- 조회수 -->
@@ -73,7 +73,7 @@
 
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content" name="content" value="${boardVo.content}">${boardVo.content}</textarea>
+								<textarea id="txt-content" name="content" >${boardVo.content}</textarea>
 							</div>
 
 

@@ -85,6 +85,10 @@ public class BoardController {
 	public String modifyForm(Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController>modifyForm()");
 
+		BoardVo boardVo = boardService.read(no);
+
+		model.addAttribute("boardVo", boardVo);
+
 		return "board/modifyForm";
 	}
 	
