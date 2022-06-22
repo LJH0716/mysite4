@@ -52,6 +52,20 @@ public class BoardController {
 
 	}
 
+	// 읽기
+
+	@RequestMapping(value = "/read", method = { RequestMethod.GET, RequestMethod.POST })
+	public String read(Model model, @RequestParam("no") int no) {
+		System.out.println("BoardController>read()");
+
+		BoardVo boardVo = boardService.read(no);
+
+		model.addAttribute("boardVo", boardVo);
+
+		return "board/read";
+
+	}
+
 	// 삭제
 	@RequestMapping(value = "/delete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String delete(@RequestParam("no") int no) {
@@ -67,22 +81,8 @@ public class BoardController {
 		return "redirect:/list";
 	}
 
-	// 읽기
-
-	@RequestMapping(value = "/read", method = { RequestMethod.GET, RequestMethod.POST })
-	public String read(Model model, @RequestParam("no") int no) {
-		System.out.println("BoardController>read()");
-
-		BoardVo boardVo = boardService.read(no);
-
-		model.addAttribute("boardVo", boardVo);
-		
-		return "board/read";
-
-	}
-	
 	// 조회수
-
-	
+	// 수정폼
+	// 수정
 
 }
