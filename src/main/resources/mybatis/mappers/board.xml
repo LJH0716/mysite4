@@ -42,7 +42,7 @@
 		<![CDATA[ 
 			update board
 			set    hit = hit+1
-			where  no = #{boardNo}
+			where  no = #{no}
 		]]>
 	</update>
 

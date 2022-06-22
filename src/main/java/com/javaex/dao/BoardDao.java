@@ -26,21 +26,38 @@ public class BoardDao {
 
 	// 글쓰기
 	public int write(BoardVo boardVo) {
-
+		System.out.println("BoardDao>write()");
+		
 		return sqlSession.insert("board.insert", boardVo);
 
 	}
 	
-	//읽기
+	// 읽기
 	public BoardVo read(int no) {
-
+		System.out.println("BoardDao>read()");
+		
 		return sqlSession.selectOne("board.read", no);
 	}
+	
+	//조회수
+	public int hitUp(int no) {
 
+		return sqlSession.update("board.hit", no);
+
+	}
+	
+	// 수정
+	public int modify(BoardVo boardVo) {
+		System.out.println("BoardDao>modify()");
+
+		return sqlSession.update("board.modify", boardVo);
+
+	}
+	
 	// 삭제
 	public int delete(int no) {
-
 		System.out.println("BoardDao>delete()");
+		
 		int count = sqlSession.delete("board.delete", no);
 
 		return count;

@@ -34,7 +34,7 @@ public class BoardController {
 	}
 
 	// 글쓰기폼
-	@RequestMapping(value = "/wirteForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/writeForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String wirteForm() {
 		System.out.println("BoardController>writeForm()");
 
@@ -57,7 +57,10 @@ public class BoardController {
 	@RequestMapping(value = "/read", method = { RequestMethod.GET, RequestMethod.POST })
 	public String read(Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController>read()");
-
+		
+		//조회수 먼저 올려주기
+		boardService.hitUp(no);
+		
 		BoardVo boardVo = boardService.read(no);
 
 		model.addAttribute("boardVo", boardVo);
@@ -71,18 +74,28 @@ public class BoardController {
 	public String delete(@RequestParam("no") int no) {
 		System.out.println("BoardController>delete()");
 
-		BoardVo boardVo = new BoardVo();
-		boardVo.getNo();
-		System.out.println(boardVo);
-
 		// Service를 통해서 삭제한다
 		boardService.delete(no);
 
 		return "redirect:/list";
 	}
 
-	// 조회수
 	// 수정폼
+	@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
+	public String modifyForm(Model model, @RequestParam("no") int no) {
+		System.out.println("BoardController>modifyForm()");
+
+		return "board/modifyForm";
+	}
+	
 	// 수정
+	@RequestMapping(value="/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modify(@ModelAttribute BoardVo boardVo) {
+		System.out.println("BoardController>modify()");
+		
+		boardService.modify(boardVo);
+		
+		return "redirect:list";
+	}
 
 }

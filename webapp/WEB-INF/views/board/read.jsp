@@ -74,7 +74,7 @@
 								<span class="form-value">${boardVo.content}</span>
 							</div>
 
-							<a id="btn_modify" href="modifyForm&no=${boardVo.no}">수정</a> 
+							<a id="btn_modify" href="/mysite4/board/modifyForm?no=${boardVo.no}">수정</a> 
 							<a id="btn_modify" href="list">목록</a>
 
 						</form>

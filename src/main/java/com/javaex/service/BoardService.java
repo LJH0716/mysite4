@@ -36,7 +36,26 @@ public class BoardService {
 	//읽기
 	public BoardVo read(int no) {
 
+		System.out.println("BoardService>read()");
 		return boardDao.read(no);
+	}
+	
+	//조회수
+	public int hitUp(int no) {
+		
+		System.out.println("BoardService>hitUp()");
+		
+		return boardDao.hitUp(no);
+	}
+	
+	//수정
+	public int modify(BoardVo boardVo) {
+
+		System.out.println("BoardService>modify()");
+		int count = boardDao.modify(boardVo);
+		
+		return count;
+	
 	}
 	
 	// 삭제

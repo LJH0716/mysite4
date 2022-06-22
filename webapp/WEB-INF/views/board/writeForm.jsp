@@ -48,7 +48,7 @@
 
 				<div id="board">
 					<div id="writeForm">
-						<form action="board" method="get">
+						<form action="write" method="get">
 							<input type="hidden" name="action" value="write">
 							<!-- 제목 -->
 							<div class="form-group">

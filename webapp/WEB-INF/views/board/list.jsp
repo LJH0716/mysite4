@@ -66,15 +66,15 @@
 							</thead>
 							<tbody>
 
-								<c:forEach items="${boardList }" var="boardVo">
+								<c:forEach items="${boardList}" var="boardVo">
 									<tr>
 										<td>${boardVo.no}</td>
-										<td class="text-left"><a href="/mysite4/read&no=${boardVo.no }">${boardVo.title }</a></td>
+										<td class="text-left"><a href="/mysite4/board/read?no=${boardVo.no}">${boardVo.title}</a></td>
 										<td>${boardVo.name}</td>
 										<td>${boardVo.hit}</td>
 										<td>${boardVo.regDate}</td>
 										<c:if test="${authUser.no == boardVo.userNo}">
-											<td><a href="/mysite4/delete&no=${boardVo.no}">[삭제]</a></td>
+											<td><a href="/mysite4/board/delete?no=${boardVo.no}">[삭제]</a></td>
 										</c:if>
 									</tr>
 								</c:forEach>
