@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -13,10 +12,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="/mysite4/assets/css/mysite.css" rel="stylesheet"
-	type="text/css">
-<link href="/mysite4/assets/css/guestbook.css" rel="stylesheet"
-	type="text/css">
+<link href="/mysite4/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="/mysite4/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -70,8 +67,7 @@
 									<td><input id="input-pass" type="password" name="password"></td>
 								</tr>
 								<tr>
-									<td colspan="4"><textarea name="content" cols="72"
-											rows="5"></textarea></td>
+									<td colspan="4"><textarea name="content" cols="72" rows="5"></textarea></td>
 								</tr>
 								<tr class="button-area">
 									<td colspan="4" class="text-center"><button type="submit">등록</button></td>
@@ -83,44 +79,28 @@
 						<input type="hidden" name="action" value="add">
 
 					</form>
-
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td><a href="delete">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
-						</tr>
-					</table>
+					<c:forEach items="${guestList}" var="Vo">
+						<table class="guestRead">
+							<colgroup>
+								<col style="width: 10%;">
+								<col style="width: 40%;">
+								<col style="width: 40%;">
+								<col style="width: 10%;">
+							</colgroup>
+							<tr>
+								<td>${Vo.no}</td>
+								<td>${Vo.name}</td>
+								<td>${Vo.regDate}</td>
+								<td><a href="./deleteForm?no=${Vo.no}">삭제</a></td>
+							</tr>
+							<tr>
+								<td colspan=4 class="text-left">${Vo.content}</td>
+							</tr>
+						</table>
+					</c:forEach>
 					<!-- //guestRead -->
 
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td><a href="delete">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
-						</tr>
-					</table>
-					<!-- //guestRead -->
+					
 
 				</div>
 				<!-- //guestbook -->
