@@ -62,7 +62,7 @@ public class UserController {
 		System.out.println("UserController>logout()");
 
 		System.out.println("로그아웃 되었습니다.");
-		session.removeAttribute("authUser");
+		session.removeAttribute("/logout");
 		session.invalidate();
 
 		return "redirect:main";

@@ -57,10 +57,10 @@ public class BoardController {
 	@RequestMapping(value = "/read", method = { RequestMethod.GET, RequestMethod.POST })
 	public String read(Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController>read()");
-		
-		//조회수 먼저 올려주기
+
+		// 조회수 먼저 올려주기
 		boardService.hitUp(no);
-		
+
 		BoardVo boardVo = boardService.read(no);
 
 		model.addAttribute("boardVo", boardVo);
@@ -91,15 +91,39 @@ public class BoardController {
 
 		return "board/modifyForm";
 	}
-	
+
 	// 수정
-	@RequestMapping(value="/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/modify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String modify(@ModelAttribute BoardVo boardVo) {
 		System.out.println("BoardController>modify()");
-		
+
 		boardService.modify(boardVo);
-		
+
 		return "redirect:list";
+	}
+	/*
+	// 검색 1
+	@RequestMapping(value = "/search", method = { RequestMethod.GET, RequestMethod.POST })
+	public String search(@RequestParam("keyword") String keyword, Model model) {
+		System.out.println("BoardContoller>search()");
+
+		List<BoardVo> boardList = boardService.getBoardList2(keyword);
+		model.addAttribute("boardList", boardList);
+
+		return "board/list2";
+	}
+	*/
+
+	// 검색2(리스트+검색)
+	@RequestMapping(value = "/list3", method = { RequestMethod.GET, RequestMethod.POST })
+	public String list3(Model model,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+		System.out.println("BoardContoller>list3()");
+
+		List<BoardVo> boardList = boardService.getBoardList3(keyword);
+		model.addAttribute("boardList", boardList);
+
+		return "board/list3";
 	}
 
 }

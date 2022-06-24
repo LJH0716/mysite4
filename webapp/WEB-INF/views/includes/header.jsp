@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -19,9 +18,8 @@
 			<c:when test="${sessionScope.authUser!=null}">
 				<ul>
 					<li>${authUser.name}님안녕하세요♡</li>
-					<li><a href="logout" class="btn_s">로그아웃</a></li>
-					<li><a href="/mysite4/modifyForm?no=${authUser.no}"
-						class="btn_s">회원정보수정</a></li>
+					<li><a href="/mysite4/logout" class="btn_s">로그아웃</a></li>
+					<li><a href="/mysite4/modifyForm?no=${authUser.no}" class="btn_s">회원정보수정</a></li>
 				</ul>
 			</c:when>
 			<c:otherwise>

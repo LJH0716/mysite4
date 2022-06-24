@@ -47,7 +47,7 @@
 
 				<div id="board">
 					<div id="list">
-						<form action="${pageContext.request.contextPath }/board/search" method="get">
+						<form action="${pageContext.request.contextPath }/board/list3" method="get">
 							<div class="form-group text-right">
 								<input type="text" name="keyword">
 								<button type="submit" id=btn_search>검색</button>
@@ -100,9 +100,15 @@
 							<div class="clear"></div>
 						</div>
 
+						<c:if test="${authUser != null}">
+							<a id="btn_write" href="writeForm">글쓰기</a>
+						</c:if>
+
+						<!-- 표현 방법 (2)
 						<c:if test="${!empty authUser }">
 							<a id="btn_write" href="${pageContext.request.contextPath }/board/writeForm">글쓰기</a>
 						</c:if>
+						 -->
 
 					</div>
 					<!-- //list -->
