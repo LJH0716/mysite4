@@ -1,3 +1,4 @@
+/*
 package com.javaex.controller;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class GuestbookController {
 		System.out.println("Controller > addList");
 
 		// Service를 통해서 주소를 가져온다
-		List<GuestbookVo> guestList = guestbookService.getList();
+		List<GuestbookVo> guestList = guestbookService.getGuestList();
 
 		model.addAttribute("guestList", guestList);
 
@@ -48,7 +49,7 @@ public class GuestbookController {
 
 		return "guestbook/deleteForm";
 	}
-
+	
 	@RequestMapping(value = "/delete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String delete(@RequestParam("no") int no, 
 						@RequestParam("password") String password) {
@@ -63,5 +64,6 @@ public class GuestbookController {
 
 		return "redirect:/addList";
 	}
-
+	 
 }
+*/

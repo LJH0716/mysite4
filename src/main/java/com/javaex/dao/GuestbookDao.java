@@ -14,30 +14,32 @@ public class GuestbookDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	// 리스트 가져오기
-	public List<GuestbookVo> getPersonList() {
-			System.out.println("guestbookDao>list()");
-			
-			List<GuestbookVo> guestList  = sqlSession.selectList("guestbook.selectList");
-			System.out.println(guestList);
-			
-			return guestList;
-	}
-	
-	//등록(add)
-	public int insert(GuestbookVo guestbookVo) {
+	// 전체리스트 가져오기
+	public List<GuestbookVo> selectList() {
+		System.out.println("GuestbookDao>selectList()");
 
-		int count = sqlSession.insert("guestbook.insert", guestbookVo);
+		List<GuestbookVo> guestbookList = sqlSession.selectList("guestbook.selectList");
+
+		return guestbookList;
+
+	}
+
+	// 방명록 저장(ajax)
+	public int insertGuest(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao>insertGuest()");
+
+		int count = sqlSession.insert("guestbook.insertSelectKey", guestbookVo);
 
 		return count;
 	}
 
-	//삭제(delete)
-		public int delete(GuestbookVo guestbookVo) {
-			
+	// 방명록 저장후 등록한 데이타 가져오기(ajax)
+	public GuestbookVo getGuest(int no) {
+		System.out.println("GuestbookDao>getGuest()");
 
-			int count = sqlSession.delete("guestbook.delete", guestbookVo);
+		GuestbookVo guestbookVo = sqlSession.selectOne("guestbook.getGuest", no);
 
-			return count;
-		}
+		return guestbookVo;
+	}
+
 }

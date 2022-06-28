@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite4/assets/css/mysite.css" rel="stylesheet"
-	type="text/css">
-<link href="/mysite4/assets/css/user.css" rel="stylesheet"
-	type="text/css">
+<link href="/mysite4/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="/mysite4/assets/css/user.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -52,23 +49,18 @@
 
 							<!-- 아이디 -->
 							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> <span
-									class="text-large bold">${userVo.id}</span>
+								<label class="form-text" for="input-uid">아이디</label> <span class="text-large bold">${userVo.id}</span>
 							</div>
 
 							<!-- 비밀번호 -->
 							<div class="form-group">
-								<label class="form-text" for="input-pass">패스워드</label> <input
-									type="text" id="input-pass" name="password" value=""
-									${userVo.password}""
-									placeholder="비밀번호를 입력하세요">
+								<label class="form-text" for="input-pass">패스워드</label> <input type="text" id="input-pass" name="password" value=" ">
+								
 							</div>
 
 							<!-- 이름 -->
 							<div class="form-group">
-								<label class="form-text" for="input-name">이름</label> <input
-									type="text" id="input-name" name="name" value="${userVo.name}"
-									placeholder="이름을 입력하세요">
+								<label class="form-text" for="input-name">이름</label> <input type="text" id="input-name" name="name" value="${userVo.name}" placeholder="이름을 입력하세요">
 							</div>
 
 							<!-- 성별 -->
@@ -77,19 +69,16 @@
 								<c:choose>
 									<c:when test="${userVo.gender == male}">
 										<label for="rdo-male">남</label>
-										<input type="radio" id="rdo-male" name="gender" value="male"
-											checked>
+										<input type="radio" id="rdo-male" name="gender" value="male" checked>
 
 										<label for="rdo-female">여</label>
-										<input type="radio" id="rdo-female" name="gender"
-											value="female">
+										<input type="radio" id="rdo-female" name="gender" value="female">
 									</c:when>
 									<c:otherwise>
 										<label for="rdo-male">남</label>
 										<input type="radio" id="rdo-male" name="gender" value="male">
 										<label for="rdo-female">여</label>
-										<input type="radio" id="rdo-female" name="gender"
-											value="female" checked="checked">
+										<input type="radio" id="rdo-female" name="gender" value="female" checked="checked">
 									</c:otherwise>
 								</c:choose>
 							</div>

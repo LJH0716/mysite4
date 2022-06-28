@@ -69,7 +69,7 @@
 									<tr>
 										<td>${boardVo.no }</td>
 										<td class="text-left"><a href="${pageContext.request.contextPath }/board/read?no=${boardVo.no}">${boardVo.title }</a></td>
-										<td>${boardVo.userName }</td>
+										<td>${boardVo.name }</td>
 										<td>${boardVo.hit }</td>
 										<td>${boardVo.regDate }</td>
 										<td><c:if test="${boardVo.userNo == authUser.no }">
