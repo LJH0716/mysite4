@@ -42,4 +42,11 @@ public class GuestbookDao {
 		return guestbookVo;
 	}
 
+	// 방명록 삭제
+	public int guestDelete(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao>guestDelete()");
+
+		return sqlSession.delete("guestbook.delete", guestbookVo);
+	}
+
 }
