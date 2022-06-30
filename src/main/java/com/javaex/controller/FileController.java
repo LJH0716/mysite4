@@ -25,7 +25,10 @@ public class FileController {
 
 	@RequestMapping(value = "/fileupload/upload", method = { RequestMethod.GET, RequestMethod.POST })
 	public String upolad(@RequestParam("file") MultipartFile file, Model model) {
+											//모든 형식의 파일을 다 받을 수 있는 것, multipartFile
 		System.out.println("FileController>upload()");
+		
+		//System.out.println(file.getOriginalFilename());-->파일 이름이 없어도 값이 들어가버리기 때문에 원본파일 이름으로 관리할것
 
 		String saveName = fileService.save(file);
 

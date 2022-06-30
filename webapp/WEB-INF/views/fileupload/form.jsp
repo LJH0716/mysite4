@@ -44,7 +44,7 @@
 				
 					<form action="${pageContext.request.contextPath}/fileupload/upload" method="post" enctype="multipart/form-data">
 					
-					<!-- **** enctype="multipart/form-data인코딩방식을 multipart방식으로 번역을 해서 데이터 보내라는 뜻 -->	
+					<!-- **** 첨부파일 있는경우: enctype="multipart/form-data ->인코딩방식을 multipart방식으로 번역을 해서 보내라는 뜻, post방식으로 -->	
 						<table>
 							<colgroup>
 								<col style="width: 600px;">
