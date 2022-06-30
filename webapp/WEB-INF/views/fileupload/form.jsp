@@ -40,8 +40,11 @@
 				</div>
 				<!-- //content-head -->
 
-				<div id="file">
+				<div id="file"> <!-- 체크체크!!! -->
+				
 					<form action="${pageContext.request.contextPath}/fileupload/upload" method="post" enctype="multipart/form-data">
+					
+					<!-- **** enctype="multipart/form-data인코딩방식을 multipart방식으로 번역을 해서 데이터 보내라는 뜻 -->	
 						<table>
 							<colgroup>
 								<col style="width: 600px;">

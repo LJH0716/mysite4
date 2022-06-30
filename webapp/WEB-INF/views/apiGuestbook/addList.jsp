@@ -161,7 +161,9 @@
 			url : "${pageContext.request.contextPath }/api/guestbook/add2",
 			type : "post",
 			contentType : "application/json",
-			data : JSON.stringify(guestVo), //js객체를 JSON문자열로 변경
+			data : JSON.stringify(guestVo), /*js객체를 JSON문자열로 변경 
+			                                  contentType : "application/json",
+			                                  data : JSON.stringify(guestVo),*****체크체크!!!!*/
 			dataType : "json",
 			success : function(gVo) {
 				//1개데이터 리스트 추가(그리기)하기
