@@ -6,13 +6,18 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.dao.FileDao;
 import com.javaex.vo.FileVo;
 
 @Service
 public class FileService {
+
+	@Autowired
+	private FileDao fileDao;
 
 	// 파일하드디스크 저장, 파일 정보(DB저장) 추출 저장
 	public String save(MultipartFile file) {
@@ -43,6 +48,8 @@ public class FileService {
 
 		// DB저장 --> 과제
 
+		fileDao.save(fileVo);
+		
 		// (2)파일저장
 		try {
 			byte[] fileData = file.getBytes();
