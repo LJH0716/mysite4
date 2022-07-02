@@ -82,7 +82,7 @@
 					<!-- </form>	 -->
 
 
-					<!-- 리스트 영역 //필요에 의해 가상으로 공간을 하나 만들어 줌-->
+					<!-- ***** 리스트 영역 //필요에 의해 가상으로 공간을 하나 만들어 줌-->
 					<div id="listArea"></div>
 					<!-- //리스트 영역 -->
 
@@ -115,7 +115,9 @@
 				</div>
 				<div class="modal-body">
 
-					비밀번호<input type="text" name="password" value=""> <br> <input type="text" name="no" value="">
+					비밀번호<input type="text" name="password" value="">
+					<br> 
+					<input type="text" name="no" value="">
 
 				</div>
 				<div class="modal-footer">
@@ -135,12 +137,16 @@
 
 </body>
 <script type="text/javascript">
+
+
 	/* 준비가 끝났을때 */
 	$(document).ready(function() {
 		/* 리스트 요청+그리기 */
 		fetchList()
 	});
-	/* 저장버튼을 클릭했을때 */
+	
+	
+	/******** 저장버튼을 클릭했을때(등록) ********/
 	//jquery 요청(json)
 	$("#btnSubmit").on("click", function() {
 		console.log("저장버튼 클릭");
@@ -162,8 +168,8 @@
 			type : "post",
 			contentType : "application/json",
 			data : JSON.stringify(guestVo), /*js객체를 JSON문자열로 변경 
-			                                  contentType : "application/json",
-			                                  data : JSON.stringify(guestVo),*****체크체크!!!!*/
+									         contentType : "application/json",
+									         data : JSON.stringify(guestVo),*****체크체크!!!!*/
 			dataType : "json",
 			success : function(gVo) {
 				//1개데이터 리스트 추가(그리기)하기
@@ -222,14 +228,22 @@
 	 });
 	 });
 	 */
+
+	 
+	 
+	/******** 삭제 **********/
+	
 	//리스트의 삭제버튼을 클릭할때
-	$("#listArea").on("click", ".btnDel", function() {
+	$("#listArea").on("click", ".btnDel", function() {//새로 추가되는 것들은 클릭이벤트가 안먹음-->부모(listArea)한테 기능주고 (btndel)넘겨야 함
+
 		console.log("리스트 삭제버튼 클릭");
-		var $this = $(this);
-		var no = $this.data("no");
+	
+		var $this = $(this); //어떤 것이 삭제 되는지 확인하기 위해서 
+		var no = $this.data("no"); //식별용으로 숨겨놓은 no값으로 (data-no)꺼내기
+		console.log(no);
 
 		//모달창에 form 값 입력
-		$('#delModal [name="password"]').val("");
+		$('#delModal [name="password"]').val(""); //css 선택자(delModal 밑에 속성값 password)
 		$('[name="no"]').val(no);
 
 		//모달창 띄우기
@@ -288,7 +302,8 @@
 		//모달창 닫기
 
 	});
-	/* 리스트 요청 */
+
+	/******** 리스트 요청 ********/
 	function fetchList() {
 		$.ajax({
 
@@ -309,7 +324,8 @@
 			}
 		});
 	}
-	/* 리스트 그리기 1개씩*/
+
+	/******** 리스트 그리기 1개씩 ********/
 	function render(guestbookVo, opt) {
 		console.log("render()");
 
@@ -326,6 +342,8 @@
 		str += '        <td>' + guestbookVo.name + '</td>';
 		str += '        <td>' + guestbookVo.regDate + '</td>';
 		str += '        <td><button class="btnDel" type="button" data-no="'+ guestbookVo.no +'">삭제</button></td>';
+		//class 로 잡아줄 것! id는 한페이지에 하나밖에 부여 못함, 삭제할 것이 여러개일때는 class
+		//data 숨겨놓을 때는 (data-),숨겨서 넣어놓고 싶은 것(data 식별용)--> data-no="'+ guestbookVo.no +'", 데이터 2개 숨기고 싶으면 각각 잡아주기(소문자로만)
 		str += '    </tr>';
 		str += '    <tr>';
 		str += '        <td colspan=4 class="text-left">' + guestbookVo.content
