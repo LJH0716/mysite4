@@ -1,4 +1,4 @@
-/*
+
 package com.javaex.controller;
 
 import java.util.List;
@@ -15,6 +15,7 @@ import com.javaex.service.GuestbookService;
 import com.javaex.vo.GuestbookVo;
 
 @Controller
+@RequestMapping(value = "/guestbook")
 public class GuestbookController {
 
 	@Autowired
@@ -37,7 +38,7 @@ public class GuestbookController {
 		System.out.println("Controller > add");
 
 		// Service를 통해서 저장한다
-		guestbookService.insert(guestbookVo);
+		guestbookService.addGuest(guestbookVo);
 
 
 		return "redirect:/addList";
@@ -60,10 +61,10 @@ public class GuestbookController {
 		System.out.println(guestbookVo);
 
 		// Service를 통해서 삭제한다
-		guestbookService.delete(guestbookVo);
+		guestbookService.removeGuest(guestbookVo);
 
 		return "redirect:/addList";
 	}
 	 
 }
-*/
+

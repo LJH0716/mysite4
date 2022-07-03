@@ -40,6 +40,7 @@ public class ApiGuestbookController {
 		return guestbookList;
 	}
 
+	
 	// 방명록 저장
 	@ResponseBody
 	@RequestMapping(value = "/api/guestbook/add", method = { RequestMethod.GET, RequestMethod.POST })

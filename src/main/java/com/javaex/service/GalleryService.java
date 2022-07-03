@@ -4,24 +4,34 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.javaex.dao.FileDao;
-import com.javaex.vo.FileVo;
+import com.javaex.dao.GalleryDao;
+import com.javaex.vo.GalleryVo;
 
 @Service
-public class FileService {
+public class GalleryService {
 
 	@Autowired
-	private FileDao fileDao;
+	private GalleryDao galleryDao;
+
+	// 리스트
+	public List<GalleryVo> getList() {
+		System.out.println("GalleryService > getList");
+
+		List<GalleryVo> galleryList = galleryDao.getgalleryList();
+		System.out.println(galleryList);
+		return galleryList;
+	}
 
 	// 파일하드디스크 저장, 파일 정보(DB저장) 추출 저장
-	public String save(MultipartFile file) {
-		System.out.println("FileService>save()");
+	public String save(MultipartFile file, String content) {
+		System.out.println("GalleryService>save()");
 
 		String saveDir = "C:\\javaStudy\\upload";
 
@@ -41,16 +51,15 @@ public class FileService {
 
 		// 파일사이즈
 		long fileSize = file.getSize();
-		
-		
+
 		// Vo로 묶기
-		FileVo fileVo = new FileVo(orgName, saveName, filePath, fileSize);
-		System.out.println(fileVo);
+		GalleryVo galleryVo = new GalleryVo();
+		System.out.println(galleryVo);
 
 		// DB저장 --> 과제
 
-		fileDao.save(fileVo);
-		
+		galleryDao.save(galleryVo);
+
 		// (2)파일저장
 		try {
 			byte[] fileData = file.getBytes();
@@ -67,6 +76,22 @@ public class FileService {
 
 		return saveName;
 
+	}
+
+	public String delete(GalleryVo galleryVo) {
+		System.out.println("GalleryService>delete()");
+
+		String state;
+
+		int count = galleryDao.delete(galleryVo);
+
+		if (count > 0) {
+			state = "succeess";
+		} else {
+			state = "fail";
+		}
+
+		return state;
 	}
 
 }
