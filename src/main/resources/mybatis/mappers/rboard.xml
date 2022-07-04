@@ -69,12 +69,20 @@
 		]]>
 	</insert>
 
-	<!-- orderNo, depth + 1 -->
-	<update id="commNoUp" parameterType="int">
+	<!-- orderNo + 1 -->
+	<update id="ordNoUp" parameterType="int">
 		<![CDATA[
 			update rboard
-			set order_no = order_no+1,
-			    depth = depth+1
+			set order_no = order_no+1
+			where group_no = #{no}
+		]]>
+	</update>
+	
+	<!--  depth + 1 -->
+	<update id="depNoUp" parameterType="int">
+		<![CDATA[
+			update rboard
+			set depth = depth+1
 			where group_no = #{no}
 		]]>
 	</update>
