@@ -103,11 +103,10 @@ public class RboardController {
 
 	// 댓글 폼
 	@RequestMapping(value = "/commentForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String commentForm(Model model, @RequestParam("no") int no) {
+	public String commentForm(Model model, @ModelAttribute RboardVo rboardVo) {
 		
 		System.out.println("RboardController->commentForm()");
 		
-		RboardVo rboardVo = rboardService.read(no);
 
 		model.addAttribute("rboardVo", rboardVo);
 
