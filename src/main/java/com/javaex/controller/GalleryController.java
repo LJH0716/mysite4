@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.GalleryService;
 import com.javaex.vo.GalleryVo;
+import com.javaex.vo.GuestbookVo;
 
 @Controller
 @RequestMapping(value = "/gallery")
@@ -45,6 +46,7 @@ public class GalleryController {
 		return "redirect:/list";
 
 	}
+
 
 	// 삭제
 	@ResponseBody

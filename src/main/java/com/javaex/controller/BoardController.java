@@ -19,7 +19,7 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-
+	/*
 	// 리스트
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(Model model) {
@@ -33,6 +33,7 @@ public class BoardController {
 		return "board/list";
 	}
 
+	 */
 	// 글쓰기폼
 	@RequestMapping(value = "/writeForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String wirteForm() {
@@ -48,7 +49,7 @@ public class BoardController {
 
 		boardService.write(boardVo);
 
-		return "redirect:/list";
+		return "redirect:/list3";
 
 	}
 
@@ -77,7 +78,7 @@ public class BoardController {
 		// Service를 통해서 삭제한다
 		boardService.delete(no);
 
-		return "redirect:/list";
+		return "redirect:/list3";
 	}
 
 	// 수정폼
@@ -99,7 +100,7 @@ public class BoardController {
 
 		boardService.modify(boardVo);
 
-		return "redirect:list";
+		return "redirect:list3";
 	}
 	/*
 	// 검색 1

@@ -49,7 +49,7 @@ public class GuestbookService {
 		int count = guestbookDao.guestDelete(guestbookVo);
 
 		if (count > 0) {
-			state = "succeess";
+			state = "success";
 		} else {
 			state = "fail";
 		}

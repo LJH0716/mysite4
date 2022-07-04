@@ -3,16 +3,12 @@
 
 <mapper namespace="gallery">
 
-	<resultMap id="resultMapGalleryVo" type="com.javaex.vo.galleryVo">
-		<result column="user_no" property="userNo" />
-	</resultMap>
-
 
 	<!-- 리스트 -->
-	<select id="selectList" resultMap="com.javaex.vo.GalleryVo">
+	<select id="selectList" resultType="com.javaex.vo.GalleryVo">
 		<![CDATA[
 			select  g.no,
-			 		g.user-no userNo,
+			 		g.user_no userNo,
 			        g.content,
 			        g.filePath,
 			        g.orgName,

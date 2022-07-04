@@ -86,7 +86,7 @@ public class GalleryService {
 		int count = galleryDao.delete(galleryVo);
 
 		if (count > 0) {
-			state = "succeess";
+			state = "success";
 		} else {
 			state = "fail";
 		}

@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite4/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite4/assets/css/main.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -26,13 +26,13 @@
 				<!-- content-head 없음 -->
 				<div id="index">
 
-					<img id="profile-img" src="/mysite4/assets/image/profile.jpg">
+					<img id="profile-img" src="${pageContext.request.contextPath}/assets/image/profile.jpg">
 
 					<div id="greetings">
 						<p class="text-xlarge">
 							<span class="bold">안녕하세요♡<br> 이정화의 MySite에 오신 것을 환영합니다<br> <br> 이 사이트는 Web programming 실습 과제 예제 사이트입니다.<br>
 							</span> <br> 사이트 소개, 회원가입, 방명록, 게시판으로 구성되어 있으며,<br> spring framework 기반으로 제작되었습니다.<br> <br> java + database + 웹 프로그래밍 <br>수업에서 배운 내용들을 토대로 만들었습니다.<br> <br> <br>
-							<br> <a class="" href="/mysite4/addList">[방명록에 글 남기기]</a>
+							<br> <a class="" href="${pageContext.request.contextPath}/api/guestbook/addList">[방명록에 글 남기기]</a>
 						</p>
 					</div>
 					<!-- //greetings -->

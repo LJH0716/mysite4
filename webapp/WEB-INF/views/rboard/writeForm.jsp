@@ -9,6 +9,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/rboard.css" rel="stylesheet" type="text/css">
 
+
 </head>
 
 
@@ -27,11 +28,12 @@
 
 			<!-- //aside -->
 
+		
 
 			<div id="content">
 
 				<div id="content-head">
-					<h3>댓글쓰기</h3>
+					<h3>게시판</h3>
 					<div id="location">
 						<ul>
 							<li>홈</li>
@@ -45,24 +47,11 @@
 
 				<div id="rboard">
 					<div id="writeForm">
-						<form action="${pageContext.request.contextPath}/rboard/commentwrite" method="get">
-
-							<!-- hidden으로 값 저장 -->
-
-							<input type="hidden" name="user_no" value="${authUser.no}"> 
-							<input type="hidden" name="group_no" value="${rboardVo.groupNo}"> 
-							<input type="hidden" name="order_no" value="${rboardVo.orderNo}"> 
-							<input type="hidden" name="depth" value="${rboardVo.depth}">
-
-							<!-- 글번호 -->
-							<div class="form-group">
-								<span class="form-text">no</span> <span class="form-value">${rboardVo.no}</span>
-							</div>
-
-
+						<form action="write" method="get">
+							<input type="hidden" name="action" value="write">
 							<!-- 제목 -->
 							<div class="form-group">
-								<label class="form-text" for="txt-title">title</label> <input type="text" id="txt-title" name="title" value="${rboardVo.title}">
+								<label class="form-text" for="txt-title">제목</label> <input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
 							</div>
 
 							<!-- 내용 -->
@@ -70,21 +59,22 @@
 								<textarea id="txt-content" name="content"></textarea>
 							</div>
 
-
 							<a id="btn_cancel" href="list">취소</a>
-							<button id="btn_modify" type="submit">수정</button>
+							<button id="btn_add" type="submit">등록</button>
 
 						</form>
 						<!-- //form -->
 					</div>
-					<!-- //modifyForm -->
+					<!-- //writeForm -->
 				</div>
 				<!-- //board -->
 			</div>
 			<!-- //content  -->
 
+
 		</div>
 		<!-- //container  -->
+
 
 
 

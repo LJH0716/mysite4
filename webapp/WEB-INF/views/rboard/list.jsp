@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/rboard.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -21,13 +21,10 @@
 
 
 		<div id="container" class="clearfix">
-			<div id="aside">
-				<h2>게시판</h2>
-				<ul>
-					<li><a href="${pageContext.request.contextPath }/board/list3">일반게시판</a></li>
-					<li><a href="${pageContext.request.contextPath }/rboard/list">댓글게시판</a></li>
-				</ul>
-			</div>
+
+			<!-- aside-->
+			<c:import url="/WEB-INF/views/includes/boardAside.jsp"></c:import>
+
 			<!-- //aside -->
 
 			<div id="content">
@@ -38,16 +35,16 @@
 						<ul>
 							<li>홈</li>
 							<li>게시판</li>
-							<li class="last">일반게시판</li>
+							<li class="last">댓글게시판</li>
 						</ul>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
 
-				<div id="board">
+				<div id="rboard">
 					<div id="list">
-						<form action="${pageContext.request.contextPath }/board/list3" method="get">
+						<form action="${pageContext.request.contextPath }/rboard/list" method="get">
 							<div class="form-group text-right">
 								<input type="text" name="keyword">
 								<button type="submit" id=btn_search>검색</button>
@@ -65,15 +62,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${boardList}" var="boardVo">
+								<c:forEach items="${rboardList}" var="rboardVo">
 									<tr>
-										<td>${boardVo.no }</td>
-										<td class="text-left"><a href="${pageContext.request.contextPath }/board/read?no=${boardVo.no}">${boardVo.title }</a></td>
-										<td>${boardVo.name }</td>
-										<td>${boardVo.hit }</td>
-										<td>${boardVo.regDate }</td>
-										<td><c:if test="${boardVo.userNo == authUser.no }">
-												<a href="${pageContext.request.contextPath }/board/delete?no=${boardVo.no}">[삭제]</a>
+										<td>${rboardVo.no }</td>
+										<td class="text-left"><a href="${pageContext.request.contextPath }/rboard/read?no=${rboardVo.no}">${rboardVo.title }</a></td>
+										<td>${rboardVo.name }</td>
+										<td>${rboardVo.hit }</td>
+										<td>${rboardVo.regDate }</td>
+										<td><c:if test="${rboardVo.userNo == authUser.no }">
+												<a href="${pageContext.request.contextPath }/rboard/delete?no=${rboardVo.no}">[삭제]</a>
 											</c:if></td>
 									</tr>
 								</c:forEach>

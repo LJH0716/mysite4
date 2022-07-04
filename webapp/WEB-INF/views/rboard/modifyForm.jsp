@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite4/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite4/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/rboard.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -22,14 +22,11 @@
 
 
 		<div id="container" class="clearfix">
-			<div id="aside">
-				<h2>게시판</h2>
-				<ul>
-					<li><a href="">일반게시판</a></li>
-					<li><a href="">댓글게시판</a></li>
-				</ul>
-			</div>
+			<!-- aside-->
+			<c:import url="/WEB-INF/views/includes/boardAside.jsp"></c:import>
+
 			<!-- //aside -->
+
 
 			<div id="content">
 
@@ -39,50 +36,52 @@
 						<ul>
 							<li>홈</li>
 							<li>게시판</li>
-							<li class="last">일반게시판</li>
+							<li class="last">댓글게시판</li>
 						</ul>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
 
-				<div id="board">
-					<div id="read">
-						<form action="board" method="get">
+				<div id="rboard">
+					<div id="modifyForm">
+						<form action="${pageContext.request.contextPath }/rboard/modify" method="get">
+							<input type="hidden" name="no" value="${rboardVo.no}">
 							<!-- 작성자 -->
 							<div class="form-group">
-								<span class="form-text">작성자</span> <span class="form-value">${boardVo.name}</span>
+								<span class="form-text">작성자</span> <span class="form-value">${rboardVo.name}</span>
 							</div>
 
 							<!-- 조회수 -->
 							<div class="form-group">
-								<span class="form-text">조회수</span> <span class="form-value">${boardVo.hit}</span>
+								<span class="form-text">조회수</span> <span class="form-value">${rboardVo.hit}</span>
 							</div>
 
 							<!-- 작성일 -->
 							<div class="form-group">
-								<span class="form-text">작성일</span> <span class="form-value">${boardVo.regDate}</span>
+								<span class="form-text">작성일</span> <span class="form-value">${rboardVo.regDate}</span>
 							</div>
 
 							<!-- 제목 -->
 							<div class="form-group">
-								<span class="form-text">제 목</span> <span class="form-value">${boardVo.title}</span>
+								<label class="form-text" for="txt-title">제목</label> <input type="text" id="txt-title" name="title" value="${rboardVo.title}">
 							</div>
+
+
 
 							<!-- 내용 -->
-							<div id="txt-content">
-								<span class="form-value">${boardVo.content}</span>
+							<div class="form-group">
+								<textarea id="txt-content" name="content">${rboardVo.content}</textarea>
 							</div>
 
-							
-							
-							<a id="btn_modify" href="/mysite4/board/modifyForm?no=${boardVo.no}">수정</a> 
-							<a id="btn_modify" href="list">목록</a>
+
+							<a id="btn_cancel" href="list">취소</a>
+							<button id="btn_modify" type="submit">수정</button>
 
 						</form>
 						<!-- //form -->
 					</div>
-					<!-- //read -->
+					<!-- //modifyForm -->
 				</div>
 				<!-- //board -->
 			</div>
@@ -96,6 +95,7 @@
 		<!-- footer -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
+
 
 	</div>
 	<!-- //wrap -->
