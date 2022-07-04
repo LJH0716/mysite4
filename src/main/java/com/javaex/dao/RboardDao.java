@@ -62,12 +62,12 @@ public class RboardDao {
 
 		return count;
 	}
-	
+
 	// 댓글
-		public int  commentWrite(RboardVo rboardVo) {
-			System.out.println("RboardDao> commentWrite()");
+	public int commentWrite(RboardVo rboardVo) {
+		System.out.println("RboardDao> commentWrite()");
 
-			return sqlSession.insert("board.insert", rboardVo);
+		return sqlSession.insert("board.commInsert", rboardVo);
 
-		}
+	}
 }
