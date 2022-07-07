@@ -119,6 +119,7 @@ public class BoardController {
 	@RequestMapping(value = "/list3", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list3(Model model,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+				//keyword처럼 값이 있을 수도 있고, 없을 수도 있는 경우에 쓰는 방식//@requestParam는 사용할때 파라미터 값이 항상 있어야함
 		System.out.println("BoardContoller>list3()");
 
 		List<BoardVo> boardList = boardService.getBoardList3(keyword);
