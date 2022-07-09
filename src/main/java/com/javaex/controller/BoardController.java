@@ -19,20 +19,34 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-	/*
-	// 리스트
-	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
-	public String list(Model model) {
-		System.out.println("BoardController > list");
 
-		// Service를 통해서 주소를 가져온다
-		List<BoardVo> boardList = boardService.getList();
+	// 리스트(페이징)
+	@RequestMapping(value = "/list4", method = { RequestMethod.GET, RequestMethod.POST })
+	public String list4(Model model,
+			@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+		System.out.println("BoardContoller>list4()");
 
-		model.addAttribute("boardList", boardList);
+		Map<String, Object> pMap = boardService.getBoardList4(crtPage);
+		model.addAttribute("pMap", pMap);
 
-		return "board/list";
+		System.out.println("controller --> " + pMap);
+
+		return "board/list4";
 	}
 
+	/*
+	 * // 리스트
+	 * 
+	 * @RequestMapping(value = "/list", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String list(Model model) {
+	 * System.out.println("BoardController > list");
+	 * 
+	 * // Service를 통해서 주소를 가져온다 List<BoardVo> boardList = boardService.getList();
+	 * 
+	 * model.addAttribute("boardList", boardList);
+	 * 
+	 * return "board/list"; }
+	 * 
 	 */
 	// 글쓰기폼
 	@RequestMapping(value = "/writeForm", method = { RequestMethod.GET, RequestMethod.POST })
@@ -103,23 +117,24 @@ public class BoardController {
 		return "redirect:list3";
 	}
 	/*
-	// 검색 1
-	@RequestMapping(value = "/search", method = { RequestMethod.GET, RequestMethod.POST })
-	public String search(@RequestParam("keyword") String keyword, Model model) {
-		System.out.println("BoardContoller>search()");
-
-		List<BoardVo> boardList = boardService.getBoardList2(keyword);
-		model.addAttribute("boardList", boardList);
-
-		return "board/list2";
-	}
-	*/
+	 * // 검색 1
+	 * 
+	 * @RequestMapping(value = "/search", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String search(@RequestParam("keyword") String
+	 * keyword, Model model) { System.out.println("BoardContoller>search()");
+	 * 
+	 * List<BoardVo> boardList = boardService.getBoardList2(keyword);
+	 * model.addAttribute("boardList", boardList);
+	 * 
+	 * return "board/list2"; }
+	 */
 
 	// 검색2(리스트+검색)
 	@RequestMapping(value = "/list3", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list3(Model model,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
-				//keyword처럼 값이 있을 수도 있고, 없을 수도 있는 경우에 쓰는 방식//@requestParam는 사용할때 파라미터 값이 항상 있어야함
+		// keyword처럼 값이 있을 수도 있고, 없을 수도 있는 경우에 쓰는 방식//@requestParam는 사용할때 파라미터 값이 항상
+		// 있어야함
 		System.out.println("BoardContoller>list3()");
 
 		List<BoardVo> boardList = boardService.getBoardList3(keyword);
