@@ -48,7 +48,7 @@
 	</select>
 
 
-	<!-- 전체글갯수 구하기 -->
+	<!-- 전체 글갯수 구하기 -->
 	<select id="selectTotalCnt" resultType="int">
 		<![CDATA[
 			select count(*) count
